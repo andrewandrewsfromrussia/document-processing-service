@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: document_service
+      POSTGRES_USER: document_service
+      POSTGRES_PASSWORD: document_service
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      DJANGO_DEBUG: "1"
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: document_service
+      DB_USER: document_service
+      DB_PASSWORD: document_service
+      ALLOWED_HOSTS: "localhost,127.0.0.1"
+      CORS_ALLOW_ALL_ORIGINS: "1"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - media_data:/app/media
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+  media_data:
