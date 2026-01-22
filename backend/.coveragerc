@@ -1,0 +1,15 @@
+[run]
+source =
+    config
+    documents
+omit =
+    */tests/*
+    */documents/tests/*
+    */migrations/*
+    */asgi.py
+    */wsgi.py
+    manage.py
+    conftest.py
+
+[report]
+show_missing = True

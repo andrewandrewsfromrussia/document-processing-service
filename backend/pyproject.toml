@@ -1,0 +1,59 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "andrew.andrews"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django (>=6.0.1,<7.0.0)",
+    "djangorestframework (>=3.16.1,<4.0.0)",
+    "django-cors-headers (>=4.9.0,<5.0.0)",
+    "drf-spectacular (>=0.29.0,<0.30.0)",
+    "django-filter (>=25.2,<26.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "pypdf (>=6.6.0,<7.0.0)",
+    "python-docx (>=1.2.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+pytest-django = "^4.11.1"
+coverage = "^7.13.1"
+ruff = "^0.14.13"
+pytest-cov = "^7.0.0"
+black = "^26.1.0"
+
+[tool.poetry]
+package-mode = false
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+skip-string-normalization = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+lint.select = ["E", "F", "W", "I", "B", "UP"]
+lint.ignore = [
+  "E501",
+]
+
+exclude = [
+  ".venv",
+  "migrations",
+  "__pycache__",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "documents"]
+combine-as-imports = true
