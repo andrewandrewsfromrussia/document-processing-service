@@ -104,6 +104,29 @@ curl -X POST "http://127.0.0.1:8000/api/documents/" \
 }
 ```
 ## Тесты и покрытие
+```
+============================================= tests coverage =============================================
+----------------------- coverage: platform linux, python 3.13.11-final-0 -----------------------
+
+Name                      Stmts   Miss  Cover   Missing
+-------------------------------------------------------
+config/__init__.py             0      0   100%
+config/settings.py            27      0   100%
+config/urls.py                 7      0   100%
+documents/__init__.py          0      0   100%
+documents/admin.py             8      0   100%
+documents/apps.py              3      0   100%
+documents/models.py           50      7    86%   62, 67-69, 74-75, 80
+documents/serializers.py      14      0   100%
+documents/services.py         52      9    83%   30, 43, 69-70, 73, 79-81, 98
+documents/urls.py              5      0   100%
+documents/views.py            54     18    67%   19, 35, 38-42, 70, 76-88
+-------------------------------------------------------
+TOTAL                        220     34    85%
+
+Required test coverage of 75% reached. Total coverage: 84.55%
+5 passed in 3.03s
+```
 
 ### Запуск тестов в Docker (рекомендуется):
 ```bash
